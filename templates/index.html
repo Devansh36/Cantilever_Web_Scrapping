@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .data {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Product Search</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="search_query">Search for products:</label>
+                <input type="text" id="search_query" name="search_query" class="form-control" value="{{ search_query }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div class="data">
+            {% if tables %}
+                {% for table in tables %}
+                    {{ table | safe }}
+                {% endfor %}
+            {% else %}
+                <p>No results found</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
